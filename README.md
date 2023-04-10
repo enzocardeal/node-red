@@ -6,7 +6,7 @@
 ## Como executar
 - Com o docker rodando e a partir da pasta raíz do projeto, execute o seguinte comando no terminal de sua escolha:
 ```bash
-docker-compose up -d
+$ docker-compose up -d
 ```
 - Acesse http://localhost:1880/
 - No menu do canto superior direito, selecione `Manage palette`

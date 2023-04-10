@@ -164,7 +164,14 @@
         "wires": [
             [
                 "e7a53f2e277bec5a",
-                "1379a14405dd0208"
+                "1379a14405dd0208",
+                "0145df19740f491f",
+                "2e575a148929b32b",
+                "afb74c840d0a484c",
+                "96f65941e34880b4",
+                "2efc8cc1f457d9b5",
+                "2b5565e4215a2205",
+                "bee4fef16357a1e2"
             ]
         ]
     },
@@ -173,7 +180,7 @@
         "type": "debug",
         "z": "0c3b8c12eaa82c16",
         "name": "debug 1",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -219,7 +226,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 560,
-        "y": 180,
+        "y": 100,
         "wires": []
     },
     {
@@ -234,7 +241,7 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 240,
+        "y": 180,
         "wires": [
             [
                 "cd635970bf86d12f",
@@ -247,7 +254,7 @@
         "type": "debug",
         "z": "0c3b8c12eaa82c16",
         "name": "debug consumo",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -256,7 +263,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 780,
-        "y": 240,
+        "y": 100,
         "wires": []
     },
     {
@@ -268,7 +275,7 @@
         "order": 0,
         "width": 0,
         "height": 0,
-        "label": "chart",
+        "label": "grafico_consumo",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -297,8 +304,449 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 750,
+        "x": 790,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0145df19740f491f",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "V_A RMS",
+        "func": "msg.payload = msg.payload.DATA.VARMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "184d4f1f9c999472"
+            ]
+        ]
+    },
+    {
+        "id": "2e575a148929b32b",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "V_B RMS",
+        "func": "msg.payload = msg.payload.DATA.VBRMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
         "y": 300,
+        "wires": [
+            [
+                "523bf46bc0d7faad"
+            ]
+        ]
+    },
+    {
+        "id": "afb74c840d0a484c",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "V_C RMS",
+        "func": "msg.payload = msg.payload.DATA.VCRMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "571b9496679e058c"
+            ]
+        ]
+    },
+    {
+        "id": "96f65941e34880b4",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "I_A RMS",
+        "func": "msg.payload = msg.payload.DATA.IARMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 440,
+        "wires": [
+            [
+                "4fd3fee05eca5d53"
+            ]
+        ]
+    },
+    {
+        "id": "2efc8cc1f457d9b5",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "I_B RMS",
+        "func": "msg.payload = msg.payload.DATA.IBRMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 500,
+        "wires": [
+            [
+                "c3b22c2e6322c83c"
+            ]
+        ]
+    },
+    {
+        "id": "2b5565e4215a2205",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "I_C RMS",
+        "func": "msg.payload = msg.payload.DATA.ICRMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 560,
+        "wires": [
+            [
+                "e866c21a34cc0c21"
+            ]
+        ]
+    },
+    {
+        "id": "bee4fef16357a1e2",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "FREQ",
+        "func": "msg.payload = Math.round(msg.payload.DATA.FREQ / 100);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 620,
+        "wires": [
+            [
+                "2c283632407757cc"
+            ]
+        ]
+    },
+    {
+        "id": "184d4f1f9c999472",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "V_A RMS",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "523bf46bc0d7faad",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "V_B RMS",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "571b9496679e058c",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "V_C RMS",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4fd3fee05eca5d53",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "I_A RMS",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c3b22c2e6322c83c",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "I_B RMS",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e866c21a34cc0c21",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "I_C RMS",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c283632407757cc",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "FREQ",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 550,
+        "y": 620,
         "wires": [
             []
         ]

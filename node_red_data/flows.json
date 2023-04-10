@@ -201,7 +201,10 @@
                 "2b5565e4215a2205",
                 "bee4fef16357a1e2",
                 "317ad7806f751bff",
-                "6d532929cfa6b2a4"
+                "6d532929cfa6b2a4",
+                "4bd6efa8a2b291b5",
+                "6e061969fabe8e3d",
+                "5fdcc525db69a89a"
             ]
         ]
     },
@@ -1084,6 +1087,107 @@
             [
                 "e866c21a34cc0c21"
             ]
+        ]
+    },
+    {
+        "id": "4bd6efa8a2b291b5",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "PA",
+        "func": "msg.payload = msg.payload.DATA.PA;\nmsg.topic = \"Potência A\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 940,
+        "wires": [
+            [
+                "7a35bc2d356e9ecf"
+            ]
+        ]
+    },
+    {
+        "id": "6e061969fabe8e3d",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "PB",
+        "func": "msg.payload = msg.payload.DATA.PB;\nmsg.topic = \"Potência B\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 1000,
+        "wires": [
+            [
+                "7a35bc2d356e9ecf"
+            ]
+        ]
+    },
+    {
+        "id": "5fdcc525db69a89a",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "PC",
+        "func": "msg.payload = msg.payload.DATA.PC;\nmsg.topic = \"Potência C\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 1060,
+        "wires": [
+            [
+                "7a35bc2d356e9ecf"
+            ]
+        ]
+    },
+    {
+        "id": "7a35bc2d356e9ecf",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "8f800140ee4e0e8a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Potências (W)",
+        "chartType": "pie",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": "50",
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 800,
+        "y": 1000,
+        "wires": [
+            []
         ]
     }
 ]

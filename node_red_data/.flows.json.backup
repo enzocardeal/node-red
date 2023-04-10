@@ -43,7 +43,8 @@
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "darkTheme": {
                 "default": "#097479",
@@ -147,6 +148,24 @@
         "width": 6
     },
     {
+        "id": "6c81220149390b1d",
+        "type": "ui_group",
+        "name": "Group 2",
+        "tab": "84500c08350419d4",
+        "order": 2,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "89f53e52108dcf15",
+        "type": "ui_group",
+        "name": "Group 3",
+        "tab": "84500c08350419d4",
+        "order": 3,
+        "disp": true,
+        "width": 6
+    },
+    {
         "id": "b173e1571a4fc62e",
         "type": "mqtt in",
         "z": "0c3b8c12eaa82c16",
@@ -164,7 +183,16 @@
         "wires": [
             [
                 "e7a53f2e277bec5a",
-                "1379a14405dd0208"
+                "1379a14405dd0208",
+                "0145df19740f491f",
+                "2e575a148929b32b",
+                "afb74c840d0a484c",
+                "96f65941e34880b4",
+                "2efc8cc1f457d9b5",
+                "2b5565e4215a2205",
+                "bee4fef16357a1e2",
+                "317ad7806f751bff",
+                "6d532929cfa6b2a4"
             ]
         ]
     },
@@ -173,7 +201,7 @@
         "type": "debug",
         "z": "0c3b8c12eaa82c16",
         "name": "debug 1",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -189,19 +217,20 @@
         "id": "1379a14405dd0208",
         "type": "function",
         "z": "0c3b8c12eaa82c16",
-        "name": "function 1",
+        "name": "PT",
         "func": "msg.payload = msg.payload.DATA.PT;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
+        "x": 350,
         "y": 180,
         "wires": [
             [
                 "a57a680d01f59e47",
-                "d2e2c17994d9b081"
+                "d2e2c17994d9b081",
+                "027a4c368fda70fa"
             ]
         ]
     },
@@ -219,22 +248,22 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 560,
-        "y": 180,
+        "y": 100,
         "wires": []
     },
     {
         "id": "d2e2c17994d9b081",
         "type": "function",
         "z": "0c3b8c12eaa82c16",
-        "name": "consumo",
-        "func": "var count = ((context.get(\"counter\")|| 0) + msg.payload/(360*1000))\nmsg.payload = Math.round(count*10000)/10000;\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"counter\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "name": "consumo_total",
+        "func": "var count = ((context.get(\"counter\")|| 0) + msg.payload/(360*1000))\nmsg.payload = Math.round(count*10000)/10000;\n\ncontext.set(\"counter\", count);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"counter\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 560,
-        "y": 240,
+        "x": 580,
+        "y": 180,
         "wires": [
             [
                 "cd635970bf86d12f",
@@ -247,7 +276,7 @@
         "type": "debug",
         "z": "0c3b8c12eaa82c16",
         "name": "debug consumo",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -255,8 +284,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 780,
-        "y": 240,
+        "x": 800,
+        "y": 100,
         "wires": []
     },
     {
@@ -268,7 +297,7 @@
         "order": 0,
         "width": 0,
         "height": 0,
-        "label": "chart",
+        "label": "Consumo Total Diário (kWh)",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -297,10 +326,755 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 750,
-        "y": 300,
+        "x": 840,
+        "y": 180,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "0145df19740f491f",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "V_A RMS",
+        "func": "msg.payload = msg.payload.DATA.VARMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 480,
+        "wires": [
+            [
+                "1ac8e14f1d068406"
+            ]
+        ]
+    },
+    {
+        "id": "2e575a148929b32b",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "V_B RMS",
+        "func": "msg.payload = msg.payload.DATA.VBRMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 540,
+        "wires": [
+            [
+                "e05e6f324166773e"
+            ]
+        ]
+    },
+    {
+        "id": "afb74c840d0a484c",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "V_C RMS",
+        "func": "msg.payload = msg.payload.DATA.VCRMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 600,
+        "wires": [
+            [
+                "e631b98a91156ebe"
+            ]
+        ]
+    },
+    {
+        "id": "96f65941e34880b4",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "I_A RMS",
+        "func": "msg.payload = msg.payload.DATA.IARMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 680,
+        "wires": [
+            [
+                "b07b53c38d3f73ef"
+            ]
+        ]
+    },
+    {
+        "id": "2efc8cc1f457d9b5",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "I_B RMS",
+        "func": "msg.payload = msg.payload.DATA.IBRMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 740,
+        "wires": [
+            [
+                "39bc2c19c39697ea"
+            ]
+        ]
+    },
+    {
+        "id": "2b5565e4215a2205",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "I_C RMS",
+        "func": "msg.payload = msg.payload.DATA.ICRMS;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 800,
+        "wires": [
+            [
+                "7a7e3e10420692d6"
+            ]
+        ]
+    },
+    {
+        "id": "bee4fef16357a1e2",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "FREQ",
+        "func": "msg.payload = Math.round(msg.payload.DATA.FREQ / 100);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 860,
+        "wires": [
+            [
+                "2c283632407757cc"
+            ]
+        ]
+    },
+    {
+        "id": "184d4f1f9c999472",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "6c81220149390b1d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Va RMS (V)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "523bf46bc0d7faad",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "6c81220149390b1d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Vb RMS (V)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "571b9496679e058c",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "6c81220149390b1d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Vc RMS (V)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4fd3fee05eca5d53",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "89f53e52108dcf15",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Ia RMS (mA)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c3b22c2e6322c83c",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "89f53e52108dcf15",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Ib RMS (mA)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e866c21a34cc0c21",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "89f53e52108dcf15",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Ic RMS (mA)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c283632407757cc",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Frequência da Rede (Hz)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 830,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "027a4c368fda70fa",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "consumo_médio",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar consumo_medio = (context.get(\"consumo_medio\") || 0);\n\nconsumo_medio = (consumo_medio * medicoes + msg.payload) / (medicoes + 1);\n\n// var count = ((context.get(\"counter\")|| 0) + msg.payload/(360*1000))\nmsg.payload = Math.round(consumo_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"consumo_medio\", consumo_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"consumo_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 260,
+        "wires": [
+            [
+                "eede647db7deeba9"
+            ]
+        ]
+    },
+    {
+        "id": "eede647db7deeba9",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Consumo Médio Diário (W)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "317ad7806f751bff",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "KWHT",
+        "func": "msg.payload = msg.payload.DATA.KWHT;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "0a8610a744c2107f"
+            ]
+        ]
+    },
+    {
+        "id": "0a8610a744c2107f",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Consumo Total (kWh)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 820,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ac8e14f1d068406",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 480,
+        "wires": [
+            [
+                "184d4f1f9c999472"
+            ]
+        ]
+    },
+    {
+        "id": "e05e6f324166773e",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 540,
+        "wires": [
+            [
+                "523bf46bc0d7faad"
+            ]
+        ]
+    },
+    {
+        "id": "6d532929cfa6b2a4",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "UPTIME",
+        "func": "var uptime = msg.payload.DATA.UPTIME;\nvar uptime_hours = uptime/(3600);\n\nmsg.payload = (1/1000) * msg.payload.DATA.KWHT / uptime_hours;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 380,
+        "wires": [
+            [
+                "10e1ed5b96df8127"
+            ]
+        ]
+    },
+    {
+        "id": "10e1ed5b96df8127",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "d": true,
+        "name": "",
+        "group": "7aba1960bad53e76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Consumo Total Médio (kW)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e631b98a91156ebe",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 600,
+        "wires": [
+            [
+                "571b9496679e058c"
+            ]
+        ]
+    },
+    {
+        "id": "b07b53c38d3f73ef",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 680,
+        "wires": [
+            [
+                "4fd3fee05eca5d53"
+            ]
+        ]
+    },
+    {
+        "id": "39bc2c19c39697ea",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 740,
+        "wires": [
+            [
+                "c3b22c2e6322c83c"
+            ]
+        ]
+    },
+    {
+        "id": "7a7e3e10420692d6",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 800,
+        "wires": [
+            [
+                "e866c21a34cc0c21"
+            ]
         ]
     }
 ]

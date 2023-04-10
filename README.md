@@ -4,7 +4,7 @@
 - Docker v4.17.0
 
 ## Como executar
-- Com o docker rodando, execute o seguinte comando no terminal de sua escolha:
+- Com o docker rodando e a partir da pasta raíz do projeto, execute o seguinte comando no terminal de sua escolha:
 ```bash
 docker-compose up -d
 ```

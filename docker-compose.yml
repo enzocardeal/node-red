@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+    nodered:
+        container_name: nodered
+        image: nodered/node-red:latest
+        restart: always
+        ports:
+          - 1880:1880
+        expose:
+          - 1880
+        volumes:
+          - ./node_red_data:/data/

@@ -166,6 +166,15 @@
         "width": 6
     },
     {
+        "id": "8f800140ee4e0e8a",
+        "type": "ui_group",
+        "name": "Group 4",
+        "tab": "84500c08350419d4",
+        "order": 4,
+        "disp": true,
+        "width": 6
+    },
+    {
         "id": "b173e1571a4fc62e",
         "type": "mqtt in",
         "z": "0c3b8c12eaa82c16",
@@ -385,7 +394,7 @@
         "y": 600,
         "wires": [
             [
-                "571b9496679e058c"
+                "e631b98a91156ebe"
             ]
         ]
     },
@@ -404,7 +413,7 @@
         "y": 680,
         "wires": [
             [
-                "4fd3fee05eca5d53"
+                "b07b53c38d3f73ef"
             ]
         ]
     },
@@ -423,7 +432,7 @@
         "y": 740,
         "wires": [
             [
-                "c3b22c2e6322c83c"
+                "39bc2c19c39697ea"
             ]
         ]
     },
@@ -442,7 +451,7 @@
         "y": 800,
         "wires": [
             [
-                "e866c21a34cc0c21"
+                "7a7e3e10420692d6"
             ]
         ]
     },
@@ -474,7 +483,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "label": "V_A RMS",
+        "label": "Va RMS (V)",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -503,7 +512,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 780,
+        "x": 790,
         "y": 480,
         "wires": [
             []
@@ -518,7 +527,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "label": "V_B RMS",
+        "label": "Vb RMS (V)",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -547,7 +556,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 780,
+        "x": 790,
         "y": 540,
         "wires": [
             []
@@ -562,7 +571,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "label": "V_C RMS",
+        "label": "Vc RMS (V)",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -591,7 +600,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 780,
+        "x": 790,
         "y": 600,
         "wires": [
             []
@@ -601,13 +610,12 @@
         "id": "4fd3fee05eca5d53",
         "type": "ui_chart",
         "z": "0c3b8c12eaa82c16",
-        "d": true,
         "name": "",
         "group": "89f53e52108dcf15",
         "order": 1,
         "width": 0,
         "height": 0,
-        "label": "I_A RMS",
+        "label": "Ia RMS (A)",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -636,7 +644,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 560,
+        "x": 790,
         "y": 680,
         "wires": [
             []
@@ -646,13 +654,12 @@
         "id": "c3b22c2e6322c83c",
         "type": "ui_chart",
         "z": "0c3b8c12eaa82c16",
-        "d": true,
         "name": "",
         "group": "89f53e52108dcf15",
         "order": 1,
         "width": 0,
         "height": 0,
-        "label": "I_B RMS",
+        "label": "Ib RMS (A)",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -681,7 +688,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 560,
+        "x": 790,
         "y": 740,
         "wires": [
             []
@@ -691,13 +698,12 @@
         "id": "e866c21a34cc0c21",
         "type": "ui_chart",
         "z": "0c3b8c12eaa82c16",
-        "d": true,
         "name": "",
         "group": "89f53e52108dcf15",
         "order": 1,
         "width": 0,
         "height": 0,
-        "label": "I_C RMS",
+        "label": "Ic RMS (A)",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -726,7 +732,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 560,
+        "x": 790,
         "y": 800,
         "wires": [
             []
@@ -736,13 +742,12 @@
         "id": "2c283632407757cc",
         "type": "ui_chart",
         "z": "0c3b8c12eaa82c16",
-        "d": true,
         "name": "",
-        "group": "7aba1960bad53e76",
+        "group": "8f800140ee4e0e8a",
         "order": 1,
         "width": 0,
         "height": 0,
-        "label": "FREQ",
+        "label": "Frequência da Rede (Hz)",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -771,7 +776,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 550,
+        "x": 830,
         "y": 860,
         "wires": [
             []
@@ -1003,6 +1008,82 @@
         "y": 380,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "e631b98a91156ebe",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 600,
+        "wires": [
+            [
+                "571b9496679e058c"
+            ]
+        ]
+    },
+    {
+        "id": "b07b53c38d3f73ef",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 680,
+        "wires": [
+            [
+                "4fd3fee05eca5d53"
+            ]
+        ]
+    },
+    {
+        "id": "39bc2c19c39697ea",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 740,
+        "wires": [
+            [
+                "c3b22c2e6322c83c"
+            ]
+        ]
+    },
+    {
+        "id": "7a7e3e10420692d6",
+        "type": "function",
+        "z": "0c3b8c12eaa82c16",
+        "name": "média móvel diária",
+        "func": "var medicoes = (context.get(\"medicoes\") || 0);\nvar valor_medio = (context.get(\"valor_medio\") || 0);\n\nvalor_medio = (valor_medio * medicoes + msg.payload) / (medicoes + 1);\n\nmsg.payload = Math.round(valor_medio*10000)/10000;\n\ncontext.set(\"medicoes\", medicoes + 1);\ncontext.set(\"valor_medio\", valor_medio);\n\nvar d = new Date();\nif (d.getHours() == 0 && d.getMinutes() == 0 && d.getSeconds() <= 30){\n    context.set(\"medicoes\", 0);\n    context.set(\"valor_medio\", 0);\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 800,
+        "wires": [
+            [
+                "e866c21a34cc0c21"
+            ]
         ]
     }
 ]

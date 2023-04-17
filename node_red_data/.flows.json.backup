@@ -269,9 +269,6 @@
         "y": 100,
         "wires": [
             [
-                "96f65941e34880b4",
-                "2efc8cc1f457d9b5",
-                "2b5565e4215a2205",
                 "62dfd34d58f9efb5"
             ]
         ]
@@ -458,7 +455,7 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "I_A RMS",
-        "func": "msg.payload = msg.payload.DATA.IARMS;\n\nmsg.topic = \"Ia Eficaz\";\nreturn msg;",
+        "func": "msg.payload = msg.payload.DATA.current.A;\n\nmsg.topic = \"Ia Eficaz\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -477,7 +474,7 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "I_B RMS",
-        "func": "msg.payload = msg.payload.DATA.IBRMS;\n\nmsg.topic = \"Ib Eficaz\";\nreturn msg;",
+        "func": "msg.payload = msg.payload.DATA.current.B;\n\nmsg.topic = \"Ib Eficaz\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -496,7 +493,7 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "I_C RMS",
-        "func": "msg.payload = msg.payload.DATA.ICRMS;\n\nmsg.topic = \"Ic Eficaz\";\nreturn msg;",
+        "func": "msg.payload = msg.payload.DATA.current.C;\n\nmsg.topic = \"Ic Eficaz\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -567,7 +564,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 830,
+        "x": 850,
         "y": 540,
         "wires": [
             []
@@ -674,7 +671,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 840,
+        "x": 880,
         "y": 260,
         "wires": [
             []
@@ -737,7 +734,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 820,
+        "x": 860,
         "y": 320,
         "wires": [
             []
@@ -976,7 +973,6 @@
                 "1379a14405dd0208",
                 "9776c7cf8a50e785",
                 "ec4285722c027062",
-                "bee4fef16357a1e2",
                 "4bd6efa8a2b291b5",
                 "6e061969fabe8e3d",
                 "5fdcc525db69a89a",
@@ -989,7 +985,11 @@
                 "0145df19740f491f",
                 "2e575a148929b32b",
                 "afb74c840d0a484c",
-                "317ad7806f751bff"
+                "317ad7806f751bff",
+                "bee4fef16357a1e2",
+                "96f65941e34880b4",
+                "2efc8cc1f457d9b5",
+                "2b5565e4215a2205"
             ]
         ]
     },

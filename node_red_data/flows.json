@@ -213,46 +213,6 @@
         "collapse": false
     },
     {
-        "id": "a2317695781e63ca",
-        "type": "ui_spacer",
-        "z": "0c3b8c12eaa82c16",
-        "name": "spacer",
-        "group": "8f800140ee4e0e8a",
-        "order": 2,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "e9588738df05f694",
-        "type": "ui_spacer",
-        "z": "0c3b8c12eaa82c16",
-        "name": "spacer",
-        "group": "8f800140ee4e0e8a",
-        "order": 3,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "8b204ffe8dc61602",
-        "type": "ui_spacer",
-        "z": "0c3b8c12eaa82c16",
-        "name": "spacer",
-        "group": "8f800140ee4e0e8a",
-        "order": 5,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "9bd0a4ea154fa0b1",
-        "type": "ui_spacer",
-        "z": "0c3b8c12eaa82c16",
-        "name": "spacer",
-        "group": "8f800140ee4e0e8a",
-        "order": 6,
-        "width": 6,
-        "height": 1
-    },
-    {
         "id": "b173e1571a4fc62e",
         "type": "mqtt in",
         "z": "0c3b8c12eaa82c16",
@@ -344,8 +304,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 800,
-        "y": 100,
+        "x": 820,
+        "y": 80,
         "wires": []
     },
     {
@@ -1180,7 +1140,7 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "Fator de Potência A",
-        "func": "msg.payload = -msg.payload.DATA.power_factor.A;\nmsg.topic = \"Fator de Potência A\";\n\nreturn msg;",
+        "func": "msg.payload = -msg.payload.DATA.power_factor.A;\nmsg.topic = \"FP A\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1199,7 +1159,7 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "Fator de Potência B",
-        "func": "msg.payload = -msg.payload.DATA.power_factor.B;\nmsg.topic = \"Fator de Potência B\";\n\nreturn msg;",
+        "func": "msg.payload = -msg.payload.DATA.power_factor.B;\nmsg.topic = \"FP B\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1218,7 +1178,7 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "Fator de Potência C",
-        "func": "msg.payload = -msg.payload.DATA.power_factor.C;\nmsg.topic = \"Fator de Potência C\";\n\nreturn msg;",
+        "func": "msg.payload = -msg.payload.DATA.power_factor.C;\nmsg.topic = \"FP C\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",

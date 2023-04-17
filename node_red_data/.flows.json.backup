@@ -269,9 +269,12 @@
         "y": 100,
         "wires": [
             [
+<<<<<<< HEAD
                 "96f65941e34880b4",
                 "2efc8cc1f457d9b5",
                 "2b5565e4215a2205",
+=======
+>>>>>>> b73277a (feat(update-interface) update interface)
                 "62dfd34d58f9efb5"
             ]
         ]
@@ -458,7 +461,11 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "I_A RMS",
+<<<<<<< HEAD
         "func": "msg.payload = msg.payload.DATA.IARMS;\n\nmsg.topic = \"Ia Eficaz\";\nreturn msg;",
+=======
+        "func": "msg.payload = msg.payload.DATA.current.A;\n\nmsg.topic = \"Ia Eficaz\";\nreturn msg;",
+>>>>>>> b73277a (feat(update-interface) update interface)
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -477,7 +484,11 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "I_B RMS",
+<<<<<<< HEAD
         "func": "msg.payload = msg.payload.DATA.IBRMS;\n\nmsg.topic = \"Ib Eficaz\";\nreturn msg;",
+=======
+        "func": "msg.payload = msg.payload.DATA.current.B;\n\nmsg.topic = \"Ib Eficaz\";\nreturn msg;",
+>>>>>>> b73277a (feat(update-interface) update interface)
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -496,7 +507,11 @@
         "type": "function",
         "z": "0c3b8c12eaa82c16",
         "name": "I_C RMS",
+<<<<<<< HEAD
         "func": "msg.payload = msg.payload.DATA.ICRMS;\n\nmsg.topic = \"Ic Eficaz\";\nreturn msg;",
+=======
+        "func": "msg.payload = msg.payload.DATA.current.C;\n\nmsg.topic = \"Ic Eficaz\";\nreturn msg;",
+>>>>>>> b73277a (feat(update-interface) update interface)
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -556,6 +571,8 @@
         "colors": [
             "#1f77b4",
             "#00ff1e",
+<<<<<<< HEAD
+=======
             "#ff7f0e",
             "#2ca02c",
             "#98df8a",
@@ -567,6 +584,52 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
+        "x": 850,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4fd3fee05eca5d53",
+        "type": "ui_chart",
+        "z": "0c3b8c12eaa82c16",
+        "name": "",
+        "group": "8f800140ee4e0e8a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Corrente Eficaz (A)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#00ff11",
+>>>>>>> b73277a (feat(update-interface) update interface)
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+<<<<<<< HEAD
         "x": 830,
         "y": 540,
         "wires": [
@@ -611,6 +674,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
+=======
+>>>>>>> b73277a (feat(update-interface) update interface)
         "x": 850,
         "y": 740,
         "wires": [
@@ -674,7 +739,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 840,
+        "x": 880,
         "y": 260,
         "wires": [
             []
@@ -737,7 +802,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 820,
+        "x": 860,
         "y": 320,
         "wires": [
             []
@@ -976,7 +1041,10 @@
                 "1379a14405dd0208",
                 "9776c7cf8a50e785",
                 "ec4285722c027062",
+<<<<<<< HEAD
                 "bee4fef16357a1e2",
+=======
+>>>>>>> b73277a (feat(update-interface) update interface)
                 "4bd6efa8a2b291b5",
                 "6e061969fabe8e3d",
                 "5fdcc525db69a89a",
@@ -989,7 +1057,15 @@
                 "0145df19740f491f",
                 "2e575a148929b32b",
                 "afb74c840d0a484c",
+<<<<<<< HEAD
                 "317ad7806f751bff"
+=======
+                "317ad7806f751bff",
+                "bee4fef16357a1e2",
+                "96f65941e34880b4",
+                "2efc8cc1f457d9b5",
+                "2b5565e4215a2205"
+>>>>>>> b73277a (feat(update-interface) update interface)
             ]
         ]
     },

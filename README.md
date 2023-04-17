@@ -26,5 +26,6 @@ $ docker-compose up -d
 - Navegue até http://localhost:1880/ui para ter acesso ao dashboard
 ## Dashboard
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/56130879/230997665-d81e7fb0-ffd4-44cc-82ff-7ca5cb95eea5.png" class="center"/>
+  <img src="https://user-images.githubusercontent.com/56130879/232616040-a1c3a37f-ace7-49ab-9448-b7982e7419fe.png" class="center"/>
 <p />
+
